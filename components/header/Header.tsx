@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Reveal } from "../utils/Reveal";
 import Nav from "./Nav";
 import menu from "@/assets/shared/tablet/icon-hamburger.svg";
 import logo from "@/assets/shared/desktop/logo.svg";

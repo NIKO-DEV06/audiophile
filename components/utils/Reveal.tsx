@@ -26,15 +26,25 @@ export const Reveal = ({ children, width = "fit-content" }: Props) => {
   }, [isInView, mainControls, slideControls]);
 
   return (
-    <div ref={ref} style={{ position: "relative", width, overflow: "hidden" }}>
+    <div
+      ref={ref}
+      style={{ position: "relative", width, overflow: "hidden" }}
+      className="z-30"
+    >
       <motion.div
         variants={{
-          hidden: { opacity: 0, y: 75 },
+          hidden: { opacity: 0, y: 80 },
           visible: { opacity: 1, y: 0 },
         }}
         initial="hidden"
         animate={mainControls}
-        transition={{ duration: 0.5, delay: 0.25 }}
+        transition={{
+          duration: 1,
+          delay: 0.35,
+          type: "spring",
+          damping: 20,
+          stiffness: 150,
+        }}
       >
         {children}
       </motion.div>
@@ -52,7 +62,7 @@ export const Reveal = ({ children, width = "fit-content" }: Props) => {
           bottom: 4,
           left: 0,
           right: 0,
-          background: "#ffffff",
+          background: "#D87D4A",
           zIndex: 20,
         }}
       />

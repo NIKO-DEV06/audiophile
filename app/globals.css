@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.hero {
+  @apply bg-[#191919] h-screen pt-[10rem] md:pt-[8rem] bg-[url('.././assets/home/mobile/image-header.jpg')] md:bg-[url('.././assets/home/tablet/image-header.jpg')] lg:bg-[url('.././assets/home/desktop/image-hero.jpg')] bg-cover lg:bg-cover md:bg-contain bg-center bg-no-repeat;
+}
