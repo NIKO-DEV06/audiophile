@@ -1,7 +1,11 @@
 import "./globals.css";
-import { Inter, Manrope } from "next/font/google";
+import { Manrope } from "next/font/google";
+import Header from "@/components/header/Header";
 
-const manrope = Manrope({ subsets: ["latin"] });
+const manrope = Manrope({
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  subsets: ["latin"],
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -15,7 +19,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={manrope.className}>{children}</body>
+      <body className={`${manrope.className} bg-white`}>
+        <Header />
+        <main>{children}</main>
+        {/* <Footer /> */}
+      </body>
     </html>
   );
 }
