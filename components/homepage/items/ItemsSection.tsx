@@ -7,7 +7,7 @@ import "@/app/globals.css";
 
 const ItemsSection = () => {
   return (
-    <section className="flex flex-col gap-[1.5rem]">
+    <section className="flex flex-col gap-[1.5rem] py-[5rem]">
       <div className="relative bg-[#D87D4A] mx-7 text-white rounded-xl flex flex-col items-center justify-center pb-[4rem] pt-[6rem] gap-[0.5rem] overflow-hidden">
         <Image
           src={pattern}
@@ -30,7 +30,7 @@ const ItemsSection = () => {
       </div>
       <div className="mx-7">
         <div className="imgSpeaker bg-center bg-no-repeat bg-cover h-[320px] rounded-xl">
-          <h1 className="text-[2rem] md:text-[4rem] text-left font-semibold lg:tracking-wider uppercase pt-[5rem] ml-[1.7rem] z-10">
+          <h1 className="text-[2rem] md:text-[4rem] text-left font-semibold tracking-wider uppercase pt-[5rem] ml-[1.7rem] z-10">
             ZX7 SPEAKER
           </h1>
           <Link href={"/"}>
@@ -43,9 +43,25 @@ const ItemsSection = () => {
           </Link>
         </div>
       </div>
-      <div>
-        <div></div>
-        <div></div>
+      <div className="flex flex-col gap-[1.5rem]">
+        <div className="mx-7">
+          <div className="imgEarphone bg-center bg-no-repeat bg-cover h-[220px] rounded-xl"></div>
+        </div>
+        <div className="mx-7">
+          <div className=" bg-[#F1F1F1] h-[220px] rounded-xl">
+            <h1 className="text-[2rem] md:text-[4rem] text-left font-semibold tracking-wider uppercase pt-[3rem] ml-[1.7rem] z-10">
+              YX1 EARPHONES
+            </h1>
+            <Link href={"/"}>
+              <Button
+                color="bg-none border-[1.7px] border-black z-10 text-black ml-[1.7rem]"
+                hover="lg:hover:bg-[#000000] lg:hover:text-white"
+              >
+                SEE PRODUCT
+              </Button>
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   );
