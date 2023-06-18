@@ -1,4 +1,5 @@
 import "@/app/globals.css";
+import Link from "next/link";
 import { Reveal } from "../utils/Reveal";
 import Button from "../utils/Button";
 
@@ -25,9 +26,14 @@ const Hero = () => {
           </p>
         </Reveal>
         <Reveal>
-          <Button color="bg-[#D87D4A]" hover="lg:hover:bg-[#FBAF85]">
-            SEE PRODUCT
-          </Button>
+          <Link href={"/"}>
+            <Button
+              color="bg-[#D87D4A] text-[1rem]"
+              hover="lg:hover:bg-[#FBAF85]"
+            >
+              SEE PRODUCT
+            </Button>
+          </Link>
         </Reveal>
       </div>
       <div className="absolute inset-0 h-screen bg-gradient-to-b from-transparent to-[#00000099] opacity-60 lg:opacity-10 z-0"></div>
