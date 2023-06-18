@@ -1,5 +1,6 @@
 import "@/app/globals.css";
 import { Reveal } from "../utils/Reveal";
+import Button from "../utils/Button";
 
 const Hero = () => {
   return (
@@ -24,9 +25,9 @@ const Hero = () => {
           </p>
         </Reveal>
         <Reveal>
-          <button className="bg-[#D87D4A] lg:hover:bg-[#FBAF85] duration-150 py-[1rem] px-[2.3rem] font-bold md:font-semibold tracking-wider md:tracking-widest mt-[1rem] md:mt-[1.5rem] md:text-[0.8rem]">
+          <Button color="bg-[#D87D4A]" hover="lg:hover:bg-[#FBAF85]">
             SEE PRODUCT
-          </button>
+          </Button>
         </Reveal>
       </div>
       <div className="absolute inset-0 h-screen bg-gradient-to-b from-transparent to-[#00000099] opacity-60 lg:opacity-10 z-0"></div>

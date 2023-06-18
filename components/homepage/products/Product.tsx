@@ -1,5 +1,4 @@
 import Image, { StaticImageData } from "next/image";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Reveal } from "@/components/utils/Reveal";
 import { ImageReveal } from "@/components/utils/ImageReveal";
