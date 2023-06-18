@@ -28,7 +28,11 @@ export const Reveal = ({ children, width = "fit-content" }: Props) => {
   return (
     <div
       ref={ref}
-      style={{ position: "relative", width, overflow: "hidden" }}
+      style={{
+        position: "relative",
+        width,
+        overflow: "hidden",
+      }}
       className="z-30"
     >
       <motion.div
