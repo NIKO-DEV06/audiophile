@@ -29,7 +29,7 @@ const Hero = () => {
           <Link href={"/"}>
             <Button
               color="bg-[#D87D4A] text-[1rem]"
-              hover="lg:hover:bg-[#FBAF85]"
+              hover="md:hover:bg-[#FBAF85]"
             >
               SEE PRODUCT
             </Button>
