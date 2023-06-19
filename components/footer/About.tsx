@@ -10,7 +10,7 @@ const About = () => {
           <div className="imgAbout bg-center bg-no-repeat bg-cover h-[330px] rounded-xl md:h-[320px] lg:h-[480px]"></div>
         </ImageReveal>
       </div>
-      <div className="flex flex-col gap-[1.5rem] md:gap-[2rem] lg:w-1/2">
+      <div className="flex flex-col items-center lg:items-start gap-[1.5rem] md:gap-[2rem] lg:w-1/2">
         <Reveal>
           <h1 className="uppercase text-center lg:text-left text-[2rem] md:text-[2.5rem] px-7 md:px-14 font-bold md:w-[40rem] lg:w-[30rem] md:mx-auto lg:mx-0 lg:px-0 tracking-wider md:leading-[3rem]">
             Bringing you the <span className="text-[#D87D4A]">best</span> audio

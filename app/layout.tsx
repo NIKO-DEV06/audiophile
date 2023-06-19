@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Manrope } from "next/font/google";
 import Header from "@/components/header/Header";
+import Footer from "@/components/footer/Footer";
 
 const manrope = Manrope({
   weight: ["200", "300", "400", "500", "600", "700", "800"],
@@ -22,7 +23,7 @@ export default function RootLayout({
       <body className={`${manrope.className} bg-whitw`}>
         <Header />
         <main>{children}</main>
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   );
