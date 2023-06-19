@@ -8,7 +8,7 @@ import cart from "@/assets/shared/desktop/icon-cart.svg";
 const Header = () => {
   return (
     <>
-      <ImageReveal position="">
+      <ImageReveal>
         <header className="bg-[#191919] text-white flex items-center justify-between px-7 md:px-14 lg:px-[8rem] xl:px-[10rem] py-8 md:py-10 border-b-[#ffffff4b] border-b-[1px] md:border-none fixed w-screen z-40">
           <div className="hidden md:block fixed h-[0.5px] bg-[#ffffff4b] right-0 left-0 top-[6.25rem] mx-14 lg:mx-[8rem] xl:mx-[10rem]"></div>
           <div>

@@ -10,7 +10,7 @@ import "@/app/globals.css";
 const ItemsSection = () => {
   return (
     <section className="flex flex-col gap-[1.5rem] py-[5rem]">
-      <ImageReveal position="">
+      <ImageReveal>
         <div className="relative bg-[#D87D4A] mx-7 md:mx-14 lg:mx-[8rem] xl:mx-[10rem] text-white rounded-xl flex flex-col lg:flex-row lg:gap-[5rem] items-center justify-center pb-[4rem] md:pb-[5rem] pt-[6rem] lg:pt-0 gap-[0.5rem] md:gap-[1rem] overflow-hidden">
           <Image
             src={pattern}
@@ -47,7 +47,7 @@ const ItemsSection = () => {
         </div>
       </ImageReveal>
       <div className="mx-7 md:mx-14 lg:mx-[8rem] xl:mx-[10rem]">
-        <ImageReveal position="">
+        <ImageReveal>
           <div className="imgSpeaker bg-center bg-no-repeat bg-cover h-[320px] rounded-xl flex flex-col justify-center pl-[1.7rem] md:pl-[5rem]">
             <Reveal>
               <h1 className="text-[2rem] text-left font-semibold tracking-wider md:tracking-widest uppercase z-10">
@@ -69,12 +69,12 @@ const ItemsSection = () => {
       </div>
       <div className="flex flex-col md:flex-row md:justify-between gap-[1.5rem] md:mx-14 lg:mx-[8rem] xl:mx-[10rem]">
         <div className="mx-7 md:mx-0 md:w-1/2">
-          <ImageReveal position="">
+          <ImageReveal>
             <div className="imgEarphone bg-center bg-no-repeat bg-cover h-[220px] rounded-xl md:h-[320px] "></div>
           </ImageReveal>
         </div>
         <div className="mx-7 md:mx-0 md:w-1/2">
-          <ImageReveal position="">
+          <ImageReveal>
             <div className=" bg-[#F1F1F1] h-[220px] rounded-xl flex flex-col justify-center md:h-[320px] pl-[1.7rem] md:pl-[3rem]">
               <Reveal>
                 <h1 className="text-[2rem] text-left font-semibold tracking-wider uppercase z-10">

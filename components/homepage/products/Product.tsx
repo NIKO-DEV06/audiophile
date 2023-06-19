@@ -1,14 +1,9 @@
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/utils/Reveal";
 import { ImageReveal } from "@/components/utils/ImageReveal";
 import rightArrow from "@/assets/shared/desktop/icon-arrow-right.svg";
-
-interface Categories {
-  img: StaticImageData;
-  name: string;
-  link: string;
-}
+import { Categories } from "@/interface/Interface";
 
 const Product = ({ img, name, link }: Categories) => {
   return (

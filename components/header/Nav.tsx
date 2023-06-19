@@ -6,13 +6,13 @@ const Nav = () => {
       <Link href={"/"} className="hover:text-[#D87D4A] duration-150">
         Home
       </Link>
-      <Link href={"/"} className="hover:text-[#D87D4A] duration-150">
+      <Link href={"/headphones"} className="hover:text-[#D87D4A] duration-150">
         Headphones
       </Link>
-      <Link href={"/"} className="hover:text-[#D87D4A] duration-150">
+      <Link href={"/speakers"} className="hover:text-[#D87D4A] duration-150">
         Speakers
       </Link>
-      <Link href={"/"} className="hover:text-[#D87D4A] duration-150">
+      <Link href={"/earphones"} className="hover:text-[#D87D4A] duration-150">
         Earphones
       </Link>
     </nav>

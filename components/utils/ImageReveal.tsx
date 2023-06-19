@@ -5,7 +5,7 @@ import { motion, useInView, useAnimation } from "framer-motion";
 
 interface Props {
   children: JSX.Element;
-  position: string | "absolute";
+  position?: string | "absolute";
 }
 
 export const ImageReveal = ({ children, position }: Props) => {
@@ -32,7 +32,7 @@ export const ImageReveal = ({ children, position }: Props) => {
         initial="hidden"
         animate={mainControls}
         transition={{
-          duration: 0.5,
+          duration: 0.7,
           delay: 0.2,
         }}
       >
