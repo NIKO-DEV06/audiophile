@@ -5,7 +5,7 @@ import { motion, useInView, useAnimation } from "framer-motion";
 
 interface Props {
   children: JSX.Element;
-  position: "" | "absolute";
+  position: string | "absolute";
 }
 
 export const ImageReveal = ({ children, position }: Props) => {

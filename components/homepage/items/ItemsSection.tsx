@@ -17,8 +17,8 @@ const ItemsSection = () => {
             alt="pattern"
             className="absolute top-0 z-0 overflowhidden scale-[1.6] md:scale-[1]"
           />
-          <ImageReveal position="">
-            <div className="z-10">
+          <ImageReveal position="z-10">
+            <div>
               <Image
                 src={spakerImage}
                 alt="speaker-img"

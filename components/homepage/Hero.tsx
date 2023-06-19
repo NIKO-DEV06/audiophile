@@ -28,7 +28,7 @@ const Hero = () => {
         <Reveal>
           <Link href={"/"}>
             <Button
-              color="bg-[#D87D4A] text-[1rem]"
+              color="bg-[#D87D4A] text-[0.8rem]"
               hover="md:hover:bg-[#FBAF85]"
             >
               SEE PRODUCT

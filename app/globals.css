@@ -13,3 +13,7 @@
 .imgEarphone {
   @apply bg-[url('.././assets/home/mobile/image-earphones-yx1.jpg')] md:bg-[url('.././assets/home/tablet/image-earphones-yx1.jpg')] lg:bg-[url('.././assets/home/desktop/image-earphones-yx1.jpg')];
 }
+
+.imgAbout {
+  @apply bg-[url('.././assets/shared/mobile/image-best-gear.jpg')] md:bg-[url('.././assets/shared/tablet/image-best-gear.jpg')] lg:bg-[url('.././assets/shared/desktop/image-best-gear.jpg')];
+}
