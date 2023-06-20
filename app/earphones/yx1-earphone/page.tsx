@@ -9,7 +9,7 @@ import ad3 from "@/assets/product-zx9-speaker/tablet/image-category-page-preview
 
 const YX1 = () => {
   const details = {
-    goBackLink: "/speakers",
+    goBackLink: "/earphones",
     img,
     name: "YX1 WIRELESS EARPHONES",
     desc: "Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature.",
