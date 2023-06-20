@@ -40,3 +40,5 @@ export interface InTheBox {
   amount: string;
   item: string;
 }
+
+export interface Cart {}
