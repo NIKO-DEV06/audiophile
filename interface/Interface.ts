@@ -41,4 +41,6 @@ export interface InTheBox {
   item: string;
 }
 
-export interface Cart {}
+export interface AudiofileState {
+  quantity: number;
+}

@@ -1,11 +1,20 @@
+import { AudiofileState } from "@/interface/Interface";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+const initialState: AudiofileState = {
+  quantity: 1,
+};
 
 const audiofileSlice = createSlice({
   name: "audiophile",
-  initialState: 1,
+  initialState,
   reducers: {
-    increment: (state) => state + 1,
-    decrement: (state) => (state > 1 ? state - 1 : state),
+    increment: (state) => {
+      state.quantity += 1;
+    },
+    decrement: (state) => {
+      state.quantity = state.quantity > 1 ? state.quantity - 1 : state.quantity;
+    },
   },
 });
 

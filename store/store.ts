@@ -3,7 +3,7 @@ import audiophileReducer from "./audiophileSlice";
 
 const store = configureStore({
   reducer: {
-    counter: audiophileReducer,
+    appState: audiophileReducer,
   },
 });
 

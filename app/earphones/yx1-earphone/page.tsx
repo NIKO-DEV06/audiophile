@@ -33,7 +33,7 @@ const YX1 = () => {
     ad1Link: "/headphones/xx99-mark-1",
     ad2,
     ad2Name: "XX59",
-    ad2Link: "/speakers/xx59",
+    ad2Link: "/headphones/xx59",
     ad3,
     ad3Name: "ZX9 SPEAKER",
     ad3Link: "/speakers/zx9-speaker",

@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/utils/Button";
@@ -5,7 +7,17 @@ import { Reveal } from "@/components/utils/Reveal";
 import { ImageReveal } from "@/components/utils/ImageReveal";
 import { SubProductDesc } from "@/interface/Interface";
 
-const SubProductItemDetail = ({ details }: { details: SubProductDesc }) => {
+const SubProductItemDetail = ({
+  details,
+  quantity,
+  onIncrement,
+  onDecrement,
+}: {
+  details: SubProductDesc;
+  quantity: number;
+  onIncrement:()=>void
+  onDecrement:()=>void
+}) => {
   return (
     <>
       <Link href={details.goBackLink}>
@@ -47,12 +59,20 @@ const SubProductItemDetail = ({ details }: { details: SubProductDesc }) => {
             </Reveal>
             <div className="flex justify-center gap-[1rem]">
               <Reveal>
-                <div className="flex justify-between gap-[1.8rem] bg-[#F1F1F1] duration-150 py-[1rem] px-[2.3rem] font-semibold tracking-wider md:tracking-widest mt-[1rem] md:mt-[1.5rem] text-[0.85rem] uppercase">
-                  <span className="cursor-pointer opacity-60 scale-[1.2]">
+                <div className="flex relative justify-between gap-[4rem] bg-[#F1F1F1] duration-150 py-[1rem] px-[2.3rem] font-semibold tracking-wider md:tracking-widest mt-[1rem] md:mt-[1.5rem] text-[0.85rem] uppercase">
+                  <span
+                    onClick={onDecrement}
+                    className="cursor-pointer opacity-60 scale-[1.2]"
+                  >
                     -
                   </span>
-                  <span className="font-semibold">1</span>
-                  <span className="cursor-pointer opacity-60 scale-[1.2]">
+                  <span className="font-semibold absolute left-1/2 -translate-x-1/2">
+                    {quantity}
+                  </span>
+                  <span
+                    onClick={onIncrement}
+                    className="cursor-pointer opacity-60 scale-[1.2]"
+                  >
                     +
                   </span>
                 </div>
@@ -90,8 +110,8 @@ const SubProductItemDetail = ({ details }: { details: SubProductDesc }) => {
               </Reveal>
             </div>
             <div className="pt-[1rem] lg:pt-[1.5rem] flex flex-col gap-[0.5rem]">
-              {details.inTheBox.map((itm) => (
-                <Reveal>
+              {details.inTheBox.map((itm, idx) => (
+                <Reveal key={idx}>
                   <p className="flex gap-[1.5rem]">
                     <span className="text-[#D87D4A] font-semibold">{`${itm.amount}x`}</span>
                     <span className="opacity-60">{itm.item}</span>
