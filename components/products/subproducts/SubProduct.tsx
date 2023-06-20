@@ -18,7 +18,7 @@ const SubProduct = ({
         position % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
       } gap-[2rem] lg:gap-[2rem] xl:gap-[5rem] mx-7 md:mx-14 lg:mx-[8rem] xl:mx-[10rem]`}
     >
-      <div className="overflow-hidden">
+      <div className="overflow-hidden rounded-xl">
         <ImageReveal>
           <Image
             src={item.img}

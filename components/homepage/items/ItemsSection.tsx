@@ -40,7 +40,7 @@ const ItemsSection = () => {
             </Reveal>
             <Reveal>
               <Button color="bg-[#000000] z-10" hover="md:hover:bg-[#4C4C4C]">
-                <Link href={"/"}>SEE PRODUCT</Link>
+                <Link href={"/speakers/zx9-speaker"}>SEE PRODUCT</Link>
               </Button>
             </Reveal>
           </div>
@@ -55,7 +55,7 @@ const ItemsSection = () => {
               </h1>
             </Reveal>
             <Reveal>
-              <Link href={"/"}>
+              <Link href={"/speakers/zx7-speaker"}>
                 <Button
                   color="bg-none border-[1.7px] border-black z-10 text-black"
                   hover="md:hover:bg-[#000000] md:hover:text-white"
@@ -82,7 +82,7 @@ const ItemsSection = () => {
                 </h1>
               </Reveal>
               <Reveal>
-                <Link href={"/"}>
+                <Link href={"/earphones/yx1-earphone"}>
                   <Button
                     color="bg-none border-[1.7px] border-black z-10 text-black"
                     hover="md:hover:bg-[#000000] md:hover:text-white"

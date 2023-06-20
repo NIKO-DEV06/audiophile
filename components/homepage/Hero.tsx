@@ -26,7 +26,7 @@ const Hero = () => {
           </p>
         </Reveal>
         <Reveal>
-          <Link href={"/"}>
+          <Link href={"/headphones/xx99-mark-2"}>
             <Button
               color="bg-[#D87D4A] text-[0.8rem]"
               hover="md:hover:bg-[#FBAF85]"
