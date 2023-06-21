@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${manrope.className} bg-white`}>
+      <body className={`${manrope.className} bg-[#101010]`}>
         <ReduxProvider>
           <Header />
           <main>{children}</main>

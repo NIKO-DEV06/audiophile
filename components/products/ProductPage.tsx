@@ -12,7 +12,7 @@ const ProductPage = ({
   products: ProductDesc[];
 }) => {
   return (
-    <section className="pt-[5.3rem] md:pt-[6.1rem]">
+    <section className="pt-[5.3rem] bg-white md:pt-[6.1rem] ">
       <SubProducts heading={heading} products={products} />
       <Products />
       <About />

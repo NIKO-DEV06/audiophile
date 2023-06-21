@@ -4,7 +4,7 @@ import { ImageReveal } from "../utils/ImageReveal";
 
 const About = () => {
   return (
-    <div className="pb-[5rem] pt-[5rem] lg:px-[8rem] xl:px-[10rem] flex flex-col lg:flex-row-reverse lg:items-center gap-[2rem] md:gap-[5rem]">
+    <div className="pb-[5rem] bg-white pt-[5rem] lg:px-[8rem] xl:px-[10rem] flex flex-col lg:flex-row-reverse lg:items-center gap-[2rem] md:gap-[5rem]">
       <div className="mx-7 md:mx-14 lg:mx-0 lg:w-full">
         <ImageReveal>
           <div className="imgAbout bg-center bg-no-repeat bg-cover h-[330px] rounded-xl md:h-[320px] lg:h-[480px]"></div>

@@ -19,7 +19,7 @@ const SubProductDetails = ({ details }: { details: SubProductDesc }) => {
     );
   };
   return (
-    <section className="pt-[5.3rem] md:pt-[6.1rem]">
+    <section className="pt-[5.3rem] md:pt-[6.1rem] bg-white">
       <SubProductItemDetail
         details={details}
         quantity={quantity}

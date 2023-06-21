@@ -9,7 +9,7 @@ import "@/app/globals.css";
 
 const ItemsSection = () => {
   return (
-    <section className="flex flex-col gap-[1.5rem] py-[5rem]">
+    <section className="flex flex-col gap-[1.5rem] py-[5rem] bg-white">
       <ImageReveal>
         <div className="relative bg-[#D87D4A] mx-7 md:mx-14 lg:mx-[8rem] xl:mx-[10rem] text-white rounded-xl flex flex-col lg:flex-row lg:gap-[5rem] items-center justify-center pb-[4rem] md:pb-[5rem] pt-[6rem] lg:pt-0 gap-[0.5rem] md:gap-[1rem] overflow-hidden">
           <Image

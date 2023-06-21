@@ -16,7 +16,7 @@ const SubProduct = ({
     <div
       className={`flex flex-col ${
         position % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-      } gap-[2rem] lg:gap-[2rem] xl:gap-[5rem] mx-7 md:mx-14 lg:mx-[8rem] xl:mx-[10rem]`}
+      } gap-[2rem] lg:gap-[2rem] xl:gap-[5rem] mx-7 md:mx-14 lg:mx-[8rem] xl:mx-[10rem] bg-white`}
     >
       <div className="overflow-hidden rounded-xl">
         <ImageReveal>

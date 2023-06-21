@@ -11,7 +11,7 @@ const SubProducts = ({
   products: ProductDesc[];
 }) => {
   return (
-    <section>
+    <section className="bg-white">
       <ImageReveal>
         <div className="bg-[#000000] text-white w-screen">
           <div className="py-[2rem] md:py-[3rem] lg:py-[4rem] flex item-center justify-center">
