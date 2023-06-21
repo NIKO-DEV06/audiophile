@@ -1,13 +1,17 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/utils/Reveal";
 import { ImageReveal } from "@/components/utils/ImageReveal";
 import rightArrow from "@/assets/shared/desktop/icon-arrow-right.svg";
 import { Categories } from "@/interface/Interface";
+import { toggleMobileMenu } from "@/store/audiophileSlice";
+import { useAppDispatch } from "@/store/hooks/hooks";
 
 const Product = ({ img, name, link }: Categories) => {
+  const dispatch = useAppDispatch();
   return (
-    <div className="bg-[#F1F1F1] rounded-xl mx-7 md:mx-0 flex flex-col items-center justify-center relative md:w-full">
+    <div className="bg-[#F1F1F1] rounded-xl mx-7 md:mx-0 flex flex-col items-center justify-center relative md:w-full shadow-lg">
       <ImageReveal position="absolute">
         <Image
           src={img}
@@ -25,7 +29,10 @@ const Product = ({ img, name, link }: Categories) => {
       </div>
       <Link href={link} className="pt-[1.1rem] pb-[1.5rem] group">
         <Reveal>
-          <div className="flex items-center gap-[1rem]">
+          <div
+            onClick={() => dispatch(toggleMobileMenu(false))}
+            className="flex items-center gap-[1rem]"
+          >
             <p className="font-bold tracking-wider uppercase opacity-50 group-hover:text-[#D87D4A] group-hover:opacity-100 duration-150 lg:text-sm">
               Shop
             </p>

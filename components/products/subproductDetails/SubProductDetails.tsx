@@ -15,7 +15,7 @@ const SubProductDetails = ({ details }: { details: SubProductDesc }) => {
 
   const handleDecrement = () => {
     setQuantity((prevQuantity) =>
-      prevQuantity > 0 ? prevQuantity - 1 : prevQuantity
+      prevQuantity > 1 ? prevQuantity - 1 : prevQuantity
     );
   };
   return (

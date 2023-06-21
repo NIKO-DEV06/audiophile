@@ -15,13 +15,13 @@ const SubProductItemDetail = ({
 }: {
   details: SubProductDesc;
   quantity: number;
-  onIncrement:()=>void
-  onDecrement:()=>void
+  onIncrement: () => void;
+  onDecrement: () => void;
 }) => {
   return (
     <>
       <Link href={details.goBackLink}>
-        <div className="ml-7 md:ml-14 lg:ml-[8rem] xl:ml-[10rem] pt-[1.5rem] md:pt-[2.5rem] pb-[2rem] tracking-wide text-[1.05rem]">
+        <div className="ml-7 md:ml-14 lg:ml-[8rem] xl:ml-[10rem] pt-[1.5rem] md:pt-[2.5rem] lg:pt-[3rem] pb-[2rem] tracking-wide text-[1.05rem]">
           <Reveal>
             <p className="opacity-60">Go Back</p>
           </Reveal>

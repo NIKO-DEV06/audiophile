@@ -11,7 +11,7 @@ const products = [
 
 const Products = () => {
   return (
-    <section className="bg-white pt-[7rem] md:pt-[10rem]  flex flex-col md:flex-row md:justify-center gap-[6rem] md:gap-[1rem] lg:gap-[2rem] md:px-14 lg:px-[8rem] xl:px-[10rem] pb-[3rem]">
+    <section className="bg-white pt-[7rem] md:pt-[10rem] flex flex-col md:flex-row md:justify-center gap-[6rem] md:gap-[1rem] lg:gap-[2rem] md:px-14 lg:px-[8rem] xl:px-[10rem] pb-[3rem]">
       {products.map((prod, index) => (
         <Product key={index} img={prod.img} name={prod.name} link={prod.link} />
       ))}

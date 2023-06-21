@@ -42,5 +42,5 @@ export interface InTheBox {
 }
 
 export interface AudiofileState {
-  quantity: number;
+  mobileMenu: boolean;
 }
