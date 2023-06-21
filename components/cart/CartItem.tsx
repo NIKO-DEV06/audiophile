@@ -1,11 +1,16 @@
-import img from "@/assets/product-zx9-speaker/desktop/image-category-page-preview.jpg";
+import img from "@/assets/product-zx9-speaker/tablet/image-category-page-preview.jpg";
 import Image from "next/image";
 
 const CartItem = () => {
   return (
     <div className="flex items-center justify-between pt-[1rem]">
-      <div>
-        <Image src={img} alt="" width={70} className="rounded-xl" />
+      <div className="bg-[#F1F1F1] h-[60px] overflow-hidden rounded-lg">
+        <Image
+          src={img}
+          alt=""
+          width={70}
+          className="rounded-xl scale-[1.5] translate-y-[0.9rem]"
+        />
       </div>
       <div className="flex flex-col">
         <p className="font-semibold text-[1rem] tracking-wide">XX99 MK II</p>

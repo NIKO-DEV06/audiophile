@@ -45,3 +45,9 @@ export interface AudiofileState {
   mobileMenu: boolean;
   cartIsVisible: boolean;
 }
+
+interface CartItem {
+  img: StaticImageData;
+  name: string;
+  price: number;
+}
