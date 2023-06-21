@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: AudiofileState = {
   mobileMenu: false,
+  cartIsVisible: false,
 };
 
 const audiofileSlice = createSlice({
@@ -12,9 +13,12 @@ const audiofileSlice = createSlice({
     toggleMobileMenu: (state, action: PayloadAction<boolean>) => {
       state.mobileMenu = action.payload;
     },
+    toggleCart: (state, action: PayloadAction<boolean>) => {
+      state.cartIsVisible = action.payload;
+    },
   },
 });
 
-export const { toggleMobileMenu } = audiofileSlice.actions;
+export const { toggleMobileMenu, toggleCart } = audiofileSlice.actions;
 
 export default audiofileSlice.reducer;

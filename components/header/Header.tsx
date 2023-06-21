@@ -7,17 +7,26 @@ import menu from "@/assets/shared/tablet/icon-hamburger.svg";
 import logo from "@/assets/shared/desktop/logo.svg";
 import cart from "@/assets/shared/desktop/icon-cart.svg";
 import { useAppDispatch, useAppSelector } from "@/store/hooks/hooks";
-import { toggleMobileMenu } from "@/store/audiophileSlice";
-import MobileMenu from "../homepage/MobileMenu";
+import { toggleCart, toggleMobileMenu } from "@/store/audiophileSlice";
+import MobileMenu from "../menu/MobileMenu";
+import Cart from "../cart/Cart";
 import Link from "next/link";
 
 const Header = () => {
   const dispatch = useAppDispatch();
   const menuIsOpen = useAppSelector((state) => state.appState.mobileMenu);
+  const cartIsShowing = useAppSelector((state) => state.appState.cartIsVisible);
 
   const toogleMenuHandler = () => {
     dispatch(toggleMobileMenu(!menuIsOpen));
+    dispatch(toggleCart(false));
   };
+
+  const toogleCartHandler = () => {
+    dispatch(toggleCart(!cartIsShowing));
+    dispatch(toggleMobileMenu(false));
+  };
+
   return (
     <>
       <ImageReveal>
@@ -27,7 +36,7 @@ const Header = () => {
             <Image
               src={menu}
               alt="menu-svg"
-              className="scale-[1.2] lg:hidden"
+              className="scale-[1.2] lg:hidden cursor-pointer"
             />
           </div>
           <div className="md:absolute md:left-[7.5rem] lg:left-[8rem] xl:left-[10rem] ">
@@ -36,12 +45,13 @@ const Header = () => {
             </Link>
           </div>
           <Nav />
-          <div>
+          <div onClick={toogleCartHandler}>
             <Image src={cart} alt="cart-svg" className="cursor-pointer" />
           </div>
         </header>
       </ImageReveal>
       <MobileMenu />
+      <Cart />
     </>
   );
 };

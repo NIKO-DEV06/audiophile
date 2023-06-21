@@ -4,7 +4,7 @@ import "@/app/globals.css";
 import Link from "next/link";
 import { Reveal } from "../utils/Reveal";
 import Button from "../utils/Button";
-import MobileMenu from "./MobileMenu";
+import MobileMenu from "../menu/MobileMenu";
 import { useAppSelector } from "@/store/hooks/hooks";
 
 const Hero = () => {

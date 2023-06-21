@@ -43,4 +43,5 @@ export interface InTheBox {
 
 export interface AudiofileState {
   mobileMenu: boolean;
+  cartIsVisible: boolean;
 }
