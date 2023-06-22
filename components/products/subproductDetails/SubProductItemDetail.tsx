@@ -35,7 +35,7 @@ const SubProductItemDetail = ({
     quantity: quantity,
   };
 
-  const notify = () =>
+  const notifyExisting = () =>
     toast("Item already in cart. Make changes in cart.", {
       icon: "🎧 ",
       className: "font-[600] text-[14px] border-[2px] border-[#D87D4A]",
@@ -48,7 +48,7 @@ const SubProductItemDetail = ({
   const handleAddToCart = () => {
     const existingItem = cart.find((item) => item.id === newCartItem.id);
     if (existingItem) {
-      notify();
+      notifyExisting();
     } else {
       dispatch(addToCart(newCartItem));
       notifyAdded();
@@ -63,7 +63,7 @@ const SubProductItemDetail = ({
     <>
       <Toaster position="top-center" reverseOrder={false} />
       <Link href={details.goBackLink}>
-        <div className="ml-7 md:ml-14 lg:ml-[8rem] xl:ml-[10rem] pt-[1.5rem] md:pt-[2.5rem] lg:pt-[3rem] pb-[2rem] tracking-wide text-[1.05rem]">
+        <div className="ml-7 md:ml-14 lg:ml-[8rem] cursor-pointer xl:ml-[10rem] pt-[1.5rem] md:pt-[2.5rem] lg:pt-[3rem] pb-[2rem] tracking-wide text-[1.05rem]">
           <Reveal>
             <p className="opacity-60 hover:opacity-100 duration-200">Go Back</p>
           </Reveal>

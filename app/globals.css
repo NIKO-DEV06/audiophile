@@ -17,3 +17,7 @@
 .imgAbout {
   @apply bg-[url('.././assets/shared/mobile/image-best-gear.jpg')] md:bg-[url('.././assets/shared/tablet/image-best-gear.jpg')] lg:bg-[url('.././assets/shared/desktop/image-best-gear.jpg')];
 }
+
+.inputs {
+  @apply outline-none border-[1px] border-[#CFCFCF] focus:border-[#D87D4A] caret-[#D87D4A] indent-8 h-[3.6rem] font-[600] w-full rounded-xl appearance-none text-[0.95rem] lg:text-[1rem];
+}

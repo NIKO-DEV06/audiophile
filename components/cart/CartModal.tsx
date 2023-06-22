@@ -1,18 +1,24 @@
 "use client";
 
 import CartItem from "./CartItem";
-import Button from "../utils/Button";
 import { useAppSelector, useAppDispatch } from "@/store/hooks/hooks";
-import { emptyCart } from "@/store/audiophileSlice";
-import Link from "next/link";
+import { emptyCart, toggleCart } from "@/store/audiophileSlice";
+import { useRouter } from "next/navigation";
 
 const CartModal = () => {
+  const router = useRouter();
   const dispatch = useAppDispatch();
   const cart = useAppSelector((state) => state.appState.cart);
   const totalCostArr = cart.flatMap((crt) => crt.quantity * crt.price);
   const totalCost = totalCostArr.reduce((accumulator, currentValue) => {
     return accumulator + currentValue;
   }, 0);
+
+  const checkoutHAndler = () => {
+    router.push("/checkout");
+    dispatch(toggleCart(false));
+  };
+
   return (
     <div className="bg-white px-[2rem] py-[2rem] rounded-xl flex flex-col gap-[0.5rem]">
       <div className="flex justify-between">
@@ -26,9 +32,7 @@ const CartModal = () => {
       </div>
       <div className="max-h-[17rem] pb-[1rem] overflow-scroll border-b-[1px] border-[#D87D4A]">
         {cart.length === 0 ? (
-          <p className="textcenter mt-[1rem] font-semibold italic">
-            No Items In Cart
-          </p>
+          <p className="mt-[1rem] font-semibold italic">No Items In Cart 🎧</p>
         ) : (
           cart.map((crt, index) => (
             <CartItem
@@ -46,14 +50,13 @@ const CartModal = () => {
         <p className="opacity-50 text-[1rem]">TOTAL</p>
         <p className="font-semibold text-[1.1rem] tracking-wider">{`$ ${totalCost.toLocaleString()}`}</p>
       </div>
-      <Link href={"/checkout"}>
-        <Button
-          color="bg-[#D87D4A] w-full text-white text-[16px]"
-          hover="md:hover:bg-[#FBAF85]"
-        >
-          CHECKOUT
-        </Button>
-      </Link>
+
+      <button
+        onClick={checkoutHAndler}
+        className={`bg-[#D87D4A] md:hover:bg-[#FBAF85] w-full text-white text-[0.85rem] duration-150 py-[1rem] px-[2.3rem] font-semibold tracking-wider md:tracking-widest mt-[1rem] md:mt-[1.5rem] uppercase`}
+      >
+        CHECKOUT
+      </button>
     </div>
   );
 };
