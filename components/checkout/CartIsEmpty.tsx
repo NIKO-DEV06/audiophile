@@ -5,7 +5,7 @@ const CartIsEmpty = () => {
   return (
     <div className="h-[65vh] flex justify-center items-center flex-col gap-[1rem]">
       <h1 className="uppercase text-3xl md:text-4xl font-semibold ">
-        Your cart is empty!
+        Your cart is empty! 🪫
       </h1>
       <Link href={"/"}>
         <button
