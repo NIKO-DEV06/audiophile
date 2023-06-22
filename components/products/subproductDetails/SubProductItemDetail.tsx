@@ -8,6 +8,7 @@ import { ImageReveal } from "@/components/utils/ImageReveal";
 import { SubProductDesc } from "@/interface/Interface";
 import { useAppDispatch, useAppSelector } from "@/store/hooks/hooks";
 import { addToCart, toggleCart } from "@/store/audiophileSlice";
+import toast, { Toaster } from "react-hot-toast";
 
 const SubProductItemDetail = ({
   details,
@@ -34,10 +35,16 @@ const SubProductItemDetail = ({
     quantity: quantity,
   };
 
+  const notify = () =>
+    toast("Item already in cart. Make changes in cart.", {
+      icon: "🎧 ",
+      className: "font-[600] text-[14px] border-[2px] border-[#D87D4A]",
+    });
+
   const handleAddToCart = () => {
     const existingItem = cart.find((item) => item.id === newCartItem.id);
     if (existingItem) {
-      alert("Item is already in the cart");
+      notify();
     } else {
       dispatch(addToCart(newCartItem));
       dispatch(toggleCart(true));
@@ -49,6 +56,7 @@ const SubProductItemDetail = ({
 
   return (
     <>
+      <Toaster position="top-center" reverseOrder={false} />
       <Link href={details.goBackLink}>
         <div className="ml-7 md:ml-14 lg:ml-[8rem] xl:ml-[10rem] pt-[1.5rem] md:pt-[2.5rem] lg:pt-[3rem] pb-[2rem] tracking-wide text-[1.05rem]">
           <Reveal>
