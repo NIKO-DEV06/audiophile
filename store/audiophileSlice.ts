@@ -47,6 +47,11 @@ const audiofileSlice = createSlice({
     emptyCart: (state) => {
       state.cart = [];
     },
+    removeItem: (state, action: PayloadAction<{ id: string | number }>) => {
+      const { id } = action.payload;
+      const newCart = state.cart.filter((item) => item.id !== id);
+      state.cart = newCart;
+    },
   },
 });
 
@@ -56,6 +61,7 @@ export const {
   addToCart,
   updateCart,
   emptyCart,
+  removeItem,
 } = audiofileSlice.actions;
 
 export default audiofileSlice.reducer;

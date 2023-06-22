@@ -36,7 +36,7 @@ const ZX9 = () => {
     ad2Link: "/headphones/xx99-mark-1",
     ad3,
     ad3Name: "XX59",
-    ad3Link: "/speakers/xx59",
+    ad3Link: "/headphones/xx59",
   };
 
   return <SubProductDetails details={details} />;

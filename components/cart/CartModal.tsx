@@ -4,6 +4,7 @@ import CartItem from "./CartItem";
 import Button from "../utils/Button";
 import { useAppSelector, useAppDispatch } from "@/store/hooks/hooks";
 import { emptyCart } from "@/store/audiophileSlice";
+import Link from "next/link";
 
 const CartModal = () => {
   const dispatch = useAppDispatch();
@@ -23,7 +24,7 @@ const CartModal = () => {
           Remove all
         </p>
       </div>
-      <div>
+      <div className="max-h-[17rem] pb-[1rem] overflow-scroll border-b-[1px] border-[#D87D4A]">
         {cart.length === 0 ? (
           <p className="textcenter mt-[1rem] font-semibold italic">
             No Items In Cart
@@ -45,12 +46,14 @@ const CartModal = () => {
         <p className="opacity-50 text-[1rem]">TOTAL</p>
         <p className="font-semibold text-[1.1rem] tracking-wider">{`$ ${totalCost.toLocaleString()}`}</p>
       </div>
-      <Button
-        color="bg-[#D87D4A] w-full text-white text-[16px]"
-        hover="md:hover:bg-[#FBAF85]"
-      >
-        CHECKOUT
-      </Button>
+      <Link href={"/checkout"}>
+        <Button
+          color="bg-[#D87D4A] w-full text-white text-[16px]"
+          hover="md:hover:bg-[#FBAF85]"
+        >
+          CHECKOUT
+        </Button>
+      </Link>
     </div>
   );
 };

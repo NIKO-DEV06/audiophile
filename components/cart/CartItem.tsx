@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Image, { StaticImageData } from "next/image";
-import { updateCart } from "@/store/audiophileSlice";
-import { useAppDispatch, useAppSelector } from "@/store/hooks/hooks";
+import { updateCart, removeItem } from "@/store/audiophileSlice";
+import { useAppDispatch } from "@/store/hooks/hooks";
 
 const CartItem = ({
   id,
@@ -18,7 +18,6 @@ const CartItem = ({
 }) => {
   const [amount, setAmount] = useState(quantity);
   const dispatch = useAppDispatch();
-  const cart = useAppSelector((state) => state.appState.cart);
 
   const handleIncrement = () => {
     const updatedAmount = amount + 1;
@@ -68,6 +67,12 @@ const CartItem = ({
         >
           +
         </span>
+        <p
+          onClick={() => dispatch(removeItem({ id }))}
+          className="absolute opacity-40 underline font-bold text-[0.65rem] translate-y-[17px] cursor-pointer hover:opacity-80 duration-150 bottom-0 right-0"
+        >
+          Remove
+        </p>
       </div>
     </div>
   );

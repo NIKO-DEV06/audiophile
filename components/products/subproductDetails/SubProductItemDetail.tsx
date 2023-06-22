@@ -40,6 +40,10 @@ const SubProductItemDetail = ({
       icon: "🎧 ",
       className: "font-[600] text-[14px] border-[2px] border-[#D87D4A]",
     });
+  const notifyAdded = () =>
+    toast.success("Item added to cart", {
+      className: "font-[600] text-[14px]",
+    });
 
   const handleAddToCart = () => {
     const existingItem = cart.find((item) => item.id === newCartItem.id);
@@ -47,6 +51,7 @@ const SubProductItemDetail = ({
       notify();
     } else {
       dispatch(addToCart(newCartItem));
+      notifyAdded();
       dispatch(toggleCart(true));
       setTimeout(() => {
         dispatch(toggleCart(false));

@@ -15,7 +15,7 @@ const Cart = () => {
       <BgReveal>
         <div
           onClick={() => dispatch(toggleCart(false))}
-          className="fixed bg-black inset-0 z-[50] opacity-40"
+          className="fixed bg-black inset-0 z-[50] opacity-60"
         ></div>
       </BgReveal>
     </>
