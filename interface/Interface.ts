@@ -44,10 +44,14 @@ export interface InTheBox {
 export interface AudiofileState {
   mobileMenu: boolean;
   cartIsVisible: boolean;
+  cart: CartItem[];
+  totalQuantity: number;
 }
 
-interface CartItem {
+export interface CartItem {
+  id: string | number;
   img: StaticImageData;
   name: string;
   price: number;
+  quantity: number;
 }

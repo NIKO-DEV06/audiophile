@@ -1,33 +1,69 @@
-import img from "@/assets/product-zx9-speaker/tablet/image-category-page-preview.jpg";
-import Image from "next/image";
+import { useState } from "react";
+import Image, { StaticImageData } from "next/image";
+import { updateCart } from "@/store/audiophileSlice";
+import { useAppDispatch, useAppSelector } from "@/store/hooks/hooks";
 
-const CartItem = () => {
+const CartItem = ({
+  id,
+  img,
+  name,
+  price,
+  quantity,
+}: {
+  id: string | number;
+  img: StaticImageData;
+  name: string;
+  price: number;
+  quantity: number;
+}) => {
+  const [amount, setAmount] = useState(quantity);
+  const dispatch = useAppDispatch();
+  const cart = useAppSelector((state) => state.appState.cart);
+
+  const handleIncrement = () => {
+    const updatedAmount = amount + 1;
+    setAmount(updatedAmount);
+    dispatch(updateCart({ id, updatedQuantity: updatedAmount }));
+  };
+
+  const handleDecrement = () => {
+    if (amount > 1) {
+      const updatedAmount = amount - 1;
+      setAmount(updatedAmount);
+      dispatch(updateCart({ id, updatedQuantity: updatedAmount }));
+    }
+  };
+
   return (
     <div className="flex items-center justify-between pt-[1rem]">
-      <div className="bg-[#F1F1F1] h-[60px] overflow-hidden rounded-lg">
-        <Image
-          src={img}
-          alt=""
-          width={70}
-          className="rounded-xl scale-[1.5] translate-y-[0.9rem]"
-        />
+      <div className="flex gap-[0.8rem] ">
+        <div className="bg-[#F1F1F1] h-[60px] overflow-hidden rounded-lg">
+          <Image
+            src={img}
+            alt=""
+            width={70}
+            className="rounded-xl scale-[1.5] translate-y-[0.9rem]"
+          />
+        </div>
+        <div className="flex flex-col">
+          <p className="font-semibold text-[1rem] tracking-wide items-start">
+            {name}
+          </p>
+          <p className="font-semibold text-[1rem] opacity-50">{`$ ${price.toLocaleString()}`}</p>
+        </div>
       </div>
-      <div className="flex flex-col">
-        <p className="font-semibold text-[1rem] tracking-wide">XX99 MK II</p>
-        <p className="font-semibold text-[1rem] opacity-50">$ 2,999</p>
-      </div>
-      <div className="flex relative justify-between gap-[4rem] bg-[#F1F1F1] py-[0.5rem] px-[1.2rem] font-semibold text-[0.85rem] uppercase">
+      <div className="flex relative justify-between gap-[4rem] bg-[#F1F1F1] py-[0.5rem] px-[1.2rem] md:ml-[0.1rem] font-semibold text-[0.85rem] uppercase">
         <span
-          // onClick={onDecrement}
+          onClick={handleDecrement}
           className="cursor-pointer opacity-40 scale-[1.2]"
         >
           -
         </span>
         <span className="font-semibold absolute left-1/2 -translate-x-1/2">
-          1
+          {amount}
         </span>
         <span
-          // onClick={onIncrement}
+          onClick={handleIncrement}
           className="cursor-pointer opacity-40 scale-[1.2]"
         >
           +

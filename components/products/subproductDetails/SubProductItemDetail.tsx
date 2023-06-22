@@ -6,6 +6,8 @@ import Button from "@/components/utils/Button";
 import { Reveal } from "@/components/utils/Reveal";
 import { ImageReveal } from "@/components/utils/ImageReveal";
 import { SubProductDesc } from "@/interface/Interface";
+import { useAppDispatch, useAppSelector } from "@/store/hooks/hooks";
+import { addToCart, toggleCart } from "@/store/audiophileSlice";
 
 const SubProductItemDetail = ({
   details,
@@ -18,6 +20,33 @@ const SubProductItemDetail = ({
   onIncrement: () => void;
   onDecrement: () => void;
 }) => {
+  const dispatch = useAppDispatch();
+  const cart = useAppSelector((state) => state.appState.cart);
+  const words = details.name.split(" ");
+  words.pop();
+  const cartName = words.join(" ");
+
+  const newCartItem = {
+    id: cartName,
+    img: details.img,
+    name: cartName,
+    price: details.price,
+    quantity: quantity,
+  };
+
+  const handleAddToCart = () => {
+    const existingItem = cart.find((item) => item.id === newCartItem.id);
+    if (existingItem) {
+      alert("Item is already in the cart");
+    } else {
+      dispatch(addToCart(newCartItem));
+      dispatch(toggleCart(true));
+      setTimeout(() => {
+        dispatch(toggleCart(false));
+      }, 1500);
+    }
+  };
+
   return (
     <>
       <Link href={details.goBackLink}>
@@ -78,12 +107,14 @@ const SubProductItemDetail = ({
                 </div>
               </Reveal>
               <Reveal>
-                <Button
-                  color="bg-[#D87D4A] text-[0.9rem] text-white"
-                  hover="md:hover:bg-[#FBAF85]"
-                >
-                  ADD TO CART
-                </Button>
+                <div onClick={handleAddToCart}>
+                  <Button
+                    color="bg-[#D87D4A] text-[0.9rem] text-white"
+                    hover="md:hover:bg-[#FBAF85]"
+                  >
+                    ADD TO CART
+                  </Button>
+                </div>
               </Reveal>
             </div>
           </div>

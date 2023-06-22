@@ -27,6 +27,7 @@ const Header = () => {
     dispatch(toggleMobileMenu(false));
   };
 
+  const totalItems = useAppSelector((state) => state.appState.cart.length);
   return (
     <>
       <ImageReveal>
@@ -39,14 +40,23 @@ const Header = () => {
               className="scale-[1.2] lg:hidden cursor-pointer"
             />
           </div>
-          <div className="md:absolute md:left-[7.5rem] lg:left-[8rem] xl:left-[10rem] ">
+          <div
+            onClick={() => {
+              dispatch(toggleCart(false));
+              dispatch(toggleMobileMenu(false));
+            }}
+            className="md:absolute md:left-[7.5rem] lg:left-[8rem] xl:left-[10rem] "
+          >
             <Link href={"/"}>
               <Image src={logo} alt="logo-svg" />
             </Link>
           </div>
           <Nav />
-          <div onClick={toogleCartHandler}>
+          <div onClick={toogleCartHandler} className="relative">
             <Image src={cart} alt="cart-svg" className="cursor-pointer" />
+            <div className="absolute cursor-pointer top-0 right-0 translate-y-[-0.6rem] translate-x-[0.5rem] bg-[#D87D4A] text-[0.7rem] px-2 py-[2px] font-semibold rounded-full">
+              {totalItems}
+            </div>
           </div>
         </header>
       </ImageReveal>
