@@ -46,6 +46,7 @@ export interface AudiofileState {
   cartIsVisible: boolean;
   cart: CartItem[];
   totalQuantity: number;
+  checkoutCompleteIsVisible: boolean;
 }
 
 export interface CartItem {
@@ -54,4 +55,16 @@ export interface CartItem {
   name: string;
   price: number;
   quantity: number;
+}
+
+export interface FormValues {
+  name: string;
+  email: string;
+  phone: number;
+  address: string;
+  zipcode: number;
+  city: string;
+  country: string;
+  enumber: number | null | undefined;
+  epin: number | null | undefined;
 }

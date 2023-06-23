@@ -11,7 +11,7 @@ const CartIsEmpty = () => {
         <button
           className={`bg-[#D87D4A] md:hover:bg-[#FBAF85]  text-white text-[0.85rem] duration-150 py-[1rem] px-[2.3rem] font-semibold tracking-wider md:tracking-widest uppercase`}
         >
-          GO BACK HOME
+          BACK TO HOME
         </button>
       </Link>
     </div>

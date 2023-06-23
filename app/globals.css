@@ -19,5 +19,5 @@
 }
 
 .inputs {
-  @apply outline-none border-[1px] border-[#CFCFCF] focus:border-[#D87D4A] caret-[#D87D4A] indent-8 h-[3.6rem] font-[600] w-full rounded-xl appearance-none text-[0.95rem] lg:text-[1rem];
+  @apply outline-none caret-[#D87D4A] indent-8 h-[3.6rem] font-[600] w-full rounded-xl appearance-none text-[0.95rem] lg:text-[1rem];
 }

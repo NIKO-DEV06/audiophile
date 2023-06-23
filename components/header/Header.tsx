@@ -11,6 +11,7 @@ import { toggleCart, toggleMobileMenu } from "@/store/audiophileSlice";
 import MobileMenu from "../menu/MobileMenu";
 import Cart from "../cart/Cart";
 import Link from "next/link";
+import CheckoutComplete from "../checkout/CheckoutComplete";
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -62,6 +63,7 @@ const Header = () => {
       </ImageReveal>
       <MobileMenu />
       <Cart />
+      <CheckoutComplete />
     </>
   );
 };

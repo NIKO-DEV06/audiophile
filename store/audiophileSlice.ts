@@ -6,6 +6,7 @@ const initialState: AudiofileState = {
   cartIsVisible: false,
   cart: [] as CartItem[],
   totalQuantity: 0,
+  checkoutCompleteIsVisible: false,
 };
 
 const audiofileSlice = createSlice({
@@ -17,6 +18,9 @@ const audiofileSlice = createSlice({
     },
     toggleCart: (state, action: PayloadAction<boolean>) => {
       state.cartIsVisible = action.payload;
+    },
+    toggleCheckout: (state, action: PayloadAction<boolean>) => {
+      state.checkoutCompleteIsVisible = action.payload;
     },
     addToCart: (state, action: PayloadAction<CartItem>) => {
       const newItem = action.payload;
@@ -58,6 +62,7 @@ const audiofileSlice = createSlice({
 export const {
   toggleMobileMenu,
   toggleCart,
+  toggleCheckout,
   addToCart,
   updateCart,
   emptyCart,
