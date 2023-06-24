@@ -2,6 +2,7 @@ import { AudiofileState, CartItem } from "@/interface/Interface";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: AudiofileState = {
+  customerName: "",
   mobileMenu: false,
   cartIsVisible: false,
   cart: [] as CartItem[],
@@ -21,6 +22,9 @@ const audiofileSlice = createSlice({
     },
     toggleCheckout: (state, action: PayloadAction<boolean>) => {
       state.checkoutCompleteIsVisible = action.payload;
+    },
+    setCustomerName: (state, action: PayloadAction<string>) => {
+      state.customerName = action.payload;
     },
     addToCart: (state, action: PayloadAction<CartItem>) => {
       const newItem = action.payload;
@@ -63,6 +67,7 @@ export const {
   toggleMobileMenu,
   toggleCart,
   toggleCheckout,
+  setCustomerName,
   addToCart,
   updateCart,
   emptyCart,

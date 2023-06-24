@@ -13,7 +13,7 @@ export const CheckOutReveal = ({ children }: Props) => {
     (state) => state.appState.checkoutCompleteIsVisible
   );
   return (
-    <div className={`w-screen fixed z-[60]`}>
+    <div className={`w-screen fixed z-[80] `}>
       <motion.div
         initial={{ y: -1000 }}
         animate={{ y: checkoutIsShowing ? 0 : -1000 }}
@@ -36,7 +36,7 @@ export const BgReveal = ({ children }: Props) => {
   );
 
   return (
-    <div className={`fixed z-[50]`}>
+    <div className={`fixed z-[70] pointer-events-none`}>
       {checkoutIsShowing && (
         <motion.div
           initial={{ opacity: 0 }}

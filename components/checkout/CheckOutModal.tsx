@@ -13,11 +13,12 @@ const CheckOutModal = () => {
     return accumulator + currentValue;
   }, 0);
   const grandTotal = (totalCost + 50 + 0.01 * totalCost).toFixed(2).toString();
+  const customer = useAppSelector((state) => state.appState.customerName);
   return (
     <div className="bg-white rounded-xl py-[2rem] px-[2rem]">
       <Image src={checkoutIcon} alt="checkout" />
       <h1 className="font-bold text-[1.8rem] tracking-wider pt-[2rem] pb-[1rem] leading-[2.5rem]">
-        THANK YOU <br /> FOR YOUR ORDER
+        {`THANK YOU${", " + customer?.toUpperCase()}`} <br /> FOR YOUR ORDER
       </h1>
       <p className="text-[1.1rem] opacity-60 lg:py-[0.5rem]">
         You will receive an email confirmation shortly.

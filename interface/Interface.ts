@@ -42,6 +42,7 @@ export interface InTheBox {
 }
 
 export interface AudiofileState {
+  customerName?: string;
   mobileMenu: boolean;
   cartIsVisible: boolean;
   cart: CartItem[];

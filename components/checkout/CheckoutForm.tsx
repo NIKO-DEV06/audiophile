@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { FormValues } from "@/interface/Interface";
-import { toggleCheckout } from "@/store/audiophileSlice";
+import { toggleCheckout, setCustomerName } from "@/store/audiophileSlice";
 
 const CheckoutForm = () => {
   const [selectedOption, setSelectedOption] = useState("emoney");
@@ -90,6 +90,10 @@ const CheckoutForm = () => {
   });
 
   const submitForm = (data: FormValues) => {
+    const words = data.name.split(" ");
+    words.pop();
+    const customerName = words.join(" ");
+    dispatch(setCustomerName(customerName));
     dispatch(toggleCheckout(true));
     reset();
   };
