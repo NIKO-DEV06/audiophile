@@ -37,7 +37,13 @@ export const AuthContextProvider = ({
 
   return (
     <AuthContext.Provider value={{ user }}>
-      {loading ? <div className="h-screen bg-white">Loading...</div> : children}
+      {loading ? (
+        <div className="h-screen bg-white font-bold text-3xl grid place-items-center">
+          🎧 Loading...
+        </div>
+      ) : (
+        children
+      )}
     </AuthContext.Provider>
   );
 };
