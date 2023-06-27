@@ -48,6 +48,7 @@ export interface AudiofileState {
   cart: CartItem[];
   totalQuantity: number;
   checkoutCompleteIsVisible: boolean;
+  authModalIsVsible: boolean;
 }
 
 export interface CartItem {

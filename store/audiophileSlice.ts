@@ -8,6 +8,7 @@ const initialState: AudiofileState = {
   cart: [] as CartItem[],
   totalQuantity: 0,
   checkoutCompleteIsVisible: false,
+  authModalIsVsible: false,
 };
 
 const audiofileSlice = createSlice({
@@ -22,6 +23,9 @@ const audiofileSlice = createSlice({
     },
     toggleCheckout: (state, action: PayloadAction<boolean>) => {
       state.checkoutCompleteIsVisible = action.payload;
+    },
+    toggleAuthModal: (state, action: PayloadAction<boolean>) => {
+      state.authModalIsVsible = action.payload;
     },
     setCustomerName: (state, action: PayloadAction<string>) => {
       state.customerName = action.payload;
@@ -67,6 +71,7 @@ export const {
   toggleMobileMenu,
   toggleCart,
   toggleCheckout,
+  toggleAuthModal,
   setCustomerName,
   addToCart,
   updateCart,

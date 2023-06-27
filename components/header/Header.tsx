@@ -6,25 +6,43 @@ import { ImageReveal } from "../utils/ImageReveal";
 import menu from "@/assets/shared/tablet/icon-hamburger.svg";
 import logo from "@/assets/shared/desktop/logo.svg";
 import cart from "@/assets/shared/desktop/icon-cart.svg";
+import profile from "@/assets/profile.svg";
 import { useAppDispatch, useAppSelector } from "@/store/hooks/hooks";
-import { toggleCart, toggleMobileMenu } from "@/store/audiophileSlice";
+import {
+  toggleCart,
+  toggleMobileMenu,
+  toggleAuthModal,
+} from "@/store/audiophileSlice";
 import MobileMenu from "../menu/MobileMenu";
 import Cart from "../cart/Cart";
 import Link from "next/link";
 import CheckoutComplete from "../checkout/CheckoutComplete";
+import Auth from "../auth/Auth";
+import { useAuthContext } from "../auth/context/AuthContext";
 
 const Header = () => {
+  const { user } = useAuthContext();
   const dispatch = useAppDispatch();
   const menuIsOpen = useAppSelector((state) => state.appState.mobileMenu);
   const cartIsShowing = useAppSelector((state) => state.appState.cartIsVisible);
+  const authIsShowing = useAppSelector(
+    (state) => state.appState.authModalIsVsible
+  );
 
   const toogleMenuHandler = () => {
     dispatch(toggleMobileMenu(!menuIsOpen));
     dispatch(toggleCart(false));
+    dispatch(toggleAuthModal(false));
   };
 
   const toogleCartHandler = () => {
     dispatch(toggleCart(!cartIsShowing));
+    dispatch(toggleMobileMenu(false));
+    dispatch(toggleAuthModal(false));
+  };
+  const toggleAuthModalHandler = () => {
+    dispatch(toggleAuthModal(!authIsShowing));
+    dispatch(toggleCart(false));
     dispatch(toggleMobileMenu(false));
   };
 
@@ -53,16 +71,32 @@ const Header = () => {
             </Link>
           </div>
           <Nav />
-          <div onClick={toogleCartHandler} className="relative">
-            <Image src={cart} alt="cart-svg" className="cursor-pointer" />
-            <div className="absolute cursor-pointer top-0 right-0 translate-y-[-0.6rem] translate-x-[0.5rem] bg-[#D87D4A] text-[0.7rem] px-2 py-[2px] font-semibold rounded-full">
-              {totalItems}
+          <div className="relative flex items-center">
+            <div>
+              <Image
+                onClick={toggleAuthModalHandler}
+                src={profile}
+                alt="cart-svg"
+                className="cursor-pointer w-[1.8rem] h-[1.8rem] translate-x-[-0.7rem]"
+              />
+              {user === null ? (
+                ""
+              ) : (
+                <div className="absolute cursor-pointer top-0 left-0 translate-y-[-0.1rem] translate-x-[0.3rem] bg-[#22ff1b] text-[0.7rem] h-[0.8rem] w-[0.8rem] font-semibold rounded-full"></div>
+              )}
+            </div>
+            <div onClick={toogleCartHandler}>
+              <Image src={cart} alt="cart-svg" className="cursor-pointer" />
+              <div className="absolute cursor-pointer top-0 right-0 translate-y-[-0.4rem] translate-x-[0.5rem] bg-[#D87D4A] text-[0.7rem] px-2 py-[2px] font-semibold rounded-full">
+                {totalItems}
+              </div>
             </div>
           </div>
         </header>
       </ImageReveal>
       <MobileMenu />
       <Cart />
+      <Auth />
       <CheckoutComplete />
     </>
   );

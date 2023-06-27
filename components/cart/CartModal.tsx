@@ -2,12 +2,19 @@
 
 import CartItem from "./CartItem";
 import { useAppSelector, useAppDispatch } from "@/store/hooks/hooks";
-import { emptyCart, toggleCart } from "@/store/audiophileSlice";
+import {
+  emptyCart,
+  toggleCart,
+  toggleAuthModal,
+} from "@/store/audiophileSlice";
+
+import { useAuthContext } from "@/components/auth/context/AuthContext";
 import { useRouter } from "next/navigation";
 
 const CartModal = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const { user } = useAuthContext();
   const cart = useAppSelector((state) => state.appState.cart);
   const totalCostArr = cart.flatMap((crt) => crt.quantity * crt.price);
   const totalCost = totalCostArr.reduce((accumulator, currentValue) => {
@@ -15,8 +22,12 @@ const CartModal = () => {
   }, 0);
 
   const checkoutHAndler = () => {
-    router.push("/checkout");
-    dispatch(toggleCart(false));
+    if (user === null) {
+      dispatch(toggleAuthModal(true));
+    } else {
+      router.push("/checkout");
+      dispatch(toggleCart(false));
+    }
   };
 
   return (
@@ -55,7 +66,7 @@ const CartModal = () => {
         onClick={checkoutHAndler}
         className={`bg-[#D87D4A] md:hover:bg-[#FBAF85] w-full text-white text-[0.85rem] duration-150 py-[1rem] px-[2.3rem] font-semibold tracking-wider md:tracking-widest mt-[1rem] md:mt-[1.5rem] uppercase`}
       >
-        CHECKOUT
+        {user === null ? "SIGN-IN To CHECKOUT" : "CHECKOUT"}
       </button>
     </div>
   );
