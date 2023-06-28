@@ -19,6 +19,61 @@ const AuthModal = () => {
   const [mode, setMode] = useState("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const validateForm = () => {
+    let isValid = true;
+
+    // Reset previous error messages
+    setEmailError("");
+    setPasswordError("");
+
+    // Validate email
+    if (
+      (mode === "signin" && !email.includes("@")) ||
+      (mode === "signup" && !email.includes("@"))
+    ) {
+      setEmailError(
+        mode === "signin" || "signup"
+          ? "Format invalid"
+          : "Email address is required"
+      );
+      isValid = false;
+    }
+
+    if ((mode === "signin" && !email) || (mode === "signup" && !email)) {
+      setEmailError(
+        mode === "signin" || "signup"
+          ? "Email address is required"
+          : "Format invalid"
+      );
+      isValid = false;
+    }
+
+    if (
+      (mode === "signin" && !emailRegex.test(email)) ||
+      (mode === "signup" && !emailRegex.test(email))
+    ) {
+      setEmailError(
+        mode === "signin" || "signup"
+          ? "Inavalid Email Address"
+          : "Format invalid"
+      );
+      isValid = false;
+    }
+
+    // Validate password
+    if (!password) {
+      setPasswordError("Password is required");
+      isValid = false;
+    } else if (password.length < 6) {
+      setPasswordError("Min. 6 characters for password.");
+      isValid = false;
+    }
+
+    return isValid;
+  };
 
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
@@ -33,28 +88,40 @@ const AuthModal = () => {
 
   const signupHandler = async (event: any) => {
     event.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
     try {
       const { result, error } = await signUp(email, password);
-      result && toast.success("You are Signed up!. You are now logged in");
-      result && setMode("signin");
-      result && dispatch(toggleAuthModal(false));
+      if (result) {
+        toast.success("You are Signed up!. You are now logged in");
+        setMode("signin");
+        dispatch(toggleAuthModal(false));
+      }
       if (error) {
         toast.error("Sign-Up Failed.");
-        return;
       }
     } catch (error) {}
   };
 
   const signinHandler = async (event: any) => {
     event.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
     try {
       const { result, error } = await signIn(email, password);
-      result && toast.success("You are Signed in!");
-      result && dispatch(toggleAuthModal(false));
+      if (result) {
+        toast.success("You are Signed in!");
+        dispatch(toggleAuthModal(false));
+      }
       if (error) {
         console.log(error);
         toast.error("Sign-In Failed.");
-        return;
       }
     } catch (error) {}
   };
@@ -63,10 +130,13 @@ const AuthModal = () => {
     setMode(newMode);
     setEmail("");
     setPassword("");
+    setEmailError("");
+    setPasswordError("");
   };
+
   return (
     <>
-      <Toaster position="top-center" reverseOrder={false} />
+      {/* <Toaster position="top-center" reverseOrder={false} /> */}
 
       <div className="bg-white mx-auto px-[2rem] py-[2rem] rounded-xl">
         <div className="flex justify-between items-center">
@@ -104,9 +174,13 @@ const AuthModal = () => {
         </div>
         <form>
           {mode === "signin" && (
-            <div className="flex flex-col gap-[1rem] mt-[1rem]">
-              <div className="">
-                <p className="font-semibold text-[0.9rem] pb-[0.2rem] trackingwider text-black">
+            <div className="flex flex-col gap-[1rem] mt[1rem]">
+              <div className="relative">
+                <p
+                  className={`font-semibold text-[0.9rem] pb-[0.2rem] trackingwider  ${
+                    emailError ? "text-[#CD2C2C]" : "text-black"
+                  }`}
+                >
                   Email address
                 </p>
                 <input
@@ -114,12 +188,30 @@ const AuthModal = () => {
                   type="email"
                   name="email"
                   autoComplete="off"
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="outline-none caret-[#D87D4A] indent-5 h-[3rem] w-full rounded-xl appearance-none text-[0.9rem] lg:text-[1rem] border-[1px] border-[#CFCFCF] focus:border-[#D87D4A]"
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    if (emailError) {
+                      setEmailError("");
+                    }
+                  }}
+                  className={`outline-none caret-[#D87D4A] indent-5 h-[3rem] w-full rounded-xl appearance-none text-[0.9rem] lg:text-[1rem] ${
+                    emailError
+                      ? "border-2 border-[#CD2C2C]"
+                      : "border-[1px] border-[#CFCFCF] focus:border-[#D87D4A]"
+                  }`}
                 />
+                {emailError && (
+                  <p className="text-[0.8rem] text-[#CD2C2C] absolute top-0 right-0">
+                    {emailError}
+                  </p>
+                )}
               </div>
-              <div className="">
-                <p className="font-semibold text-[0.9rem] pb-[0.2rem] trackingwider text-black">
+              <div className="relative">
+                <p
+                  className={`font-semibold text-[0.9rem] pb-[0.2rem] trackingwider  ${
+                    passwordError ? "text-[#CD2C2C]" : "text-black"
+                  }`}
+                >
                   Password
                 </p>
                 <input
@@ -127,16 +219,34 @@ const AuthModal = () => {
                   type="password"
                   name="password"
                   autoComplete="off"
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="outline-none caret-[#D87D4A] indent-5 h-[3rem] w-full rounded-xl appearance-none text-[0.9rem] lg:text-[1rem] border-[1px] border-[#CFCFCF] focus:border-[#D87D4A]"
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                    if (passwordError) {
+                      setPasswordError("");
+                    }
+                  }}
+                  className={`outline-none caret-[#D87D4A] indent-5 h-[3rem] w-full rounded-xl appearance-none text-[0.9rem] lg:text-[1rem] ${
+                    passwordError
+                      ? "border-2 border-[#CD2C2C]"
+                      : "border-[1px] border-[#CFCFCF] focus:border-[#D87D4A]"
+                  }`}
                 />
+                {passwordError && (
+                  <p className="text-[0.8rem] text-[#CD2C2C] absolute top-0 right-0">
+                    {passwordError}
+                  </p>
+                )}
               </div>
             </div>
           )}
           {mode === "signup" && (
-            <div className="flex flex-col gap-[1rem] mt-[1rem]">
-              <div className="">
-                <p className="font-semibold text-[0.9rem] pb-[0.2rem] trackingwider text-black">
+            <div className="flex flex-col gap-[1rem] mt[1rem]">
+              <div className="relative">
+                <p
+                  className={`font-semibold text-[0.9rem] pb-[0.2rem] trackingwider  ${
+                    emailError ? "text-[#CD2C2C]" : "text-black"
+                  }`}
+                >
                   Email address
                 </p>
                 <input
@@ -144,12 +254,30 @@ const AuthModal = () => {
                   type="email"
                   name="email"
                   autoComplete="off"
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="outline-none caret-[#D87D4A] indent-5 h-[3rem] w-full rounded-xl appearance-none text-[0.9rem] lg:text-[1rem] border-[1px] border-[#CFCFCF] focus:border-[#D87D4A]"
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    if (emailError) {
+                      setEmailError("");
+                    }
+                  }}
+                  className={`outline-none caret-[#D87D4A] indent-5 h-[3rem] w-full rounded-xl appearance-none text-[0.9rem] lg:text-[1rem] ${
+                    emailError
+                      ? "border-2 border-[#CD2C2C]"
+                      : "border-[1px] border-[#CFCFCF] focus:border-[#D87D4A]"
+                  }`}
                 />
+                {emailError && (
+                  <p className="text-[0.8rem] text-[#CD2C2C] absolute top-0 right-0">
+                    {emailError}
+                  </p>
+                )}
               </div>
-              <div className="">
-                <p className="font-semibold text-[0.9rem] pb-[0.2rem] trackingwider text-black">
+              <div className="relative">
+                <p
+                  className={`font-semibold text-[0.9rem] pb-[0.2rem] trackingwider  ${
+                    passwordError ? "text-[#CD2C2C]" : "text-black"
+                  }`}
+                >
                   Password
                 </p>
                 <input
@@ -157,53 +285,52 @@ const AuthModal = () => {
                   type="password"
                   name="password"
                   autoComplete="off"
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="outline-none caret-[#D87D4A] indent-5 h-[3rem] w-full rounded-xl appearance-none text-[0.9rem] lg:text-[1rem] border-[1px] border-[#CFCFCF] focus:border-[#D87D4A]"
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                    if (passwordError) {
+                      setPasswordError("");
+                    }
+                  }}
+                  className={`outline-none caret-[#D87D4A] indent-5 h-[3rem] w-full rounded-xl appearance-none text-[0.9rem] lg:text-[1rem] ${
+                    passwordError
+                      ? "border-2 border-[#CD2C2C]"
+                      : "border-[1px] border-[#CFCFCF] focus:border-[#D87D4A]"
+                  }`}
                 />
+                {passwordError && (
+                  <p className="text-[0.8rem] text-[#CD2C2C] absolute top-0 right-0">
+                    {passwordError}
+                  </p>
+                )}
               </div>
             </div>
           )}
           {mode === "signin" && (
-            <button
-              onClick={signinHandler}
-              className="w-full rounded-lg  mt-[1.5rem] bg-[#D87D4A] hover:bg-[#FBAF85] duration-150 text-white py-[0.5rem] text-[0.9rem] font-[500] tracking-wider uppercase"
-            >
-              Sign In
-            </button>
+            <p className="text-right text-gray-400 text-[0.8rem] mt-[0.5rem] cursor-pointer">
+              Forgot Password?
+            </p>
           )}
-          {mode === "signup" && (
-            <button
-              onClick={signupHandler}
-              className="w-full rounded-lg  mt-[1.5rem] bg-[#D87D4A] hover:bg-[#FBAF85] duration-150 text-white py-[0.5rem] text-[0.9rem] font-[500] tracking-wider uppercase"
-            >
-              Sign Up
-            </button>
-          )}
+          <button
+            type="submit"
+            onClick={mode === "signin" ? signinHandler : signupHandler}
+            className="bg-[#D87D4A] text-white w-full py-[0.8rem] rounded-xl mt-[1.5rem] font-semibold hover:bg-opacity-90 duration-150 uppercase"
+          >
+            {mode === "signin" ? "Sign In" : "Sign Up"}
+          </button>
         </form>
-        {mode === "signin" && (
-          <p className="mt-[1.5rem] pb-[1rem] md:pb-0 text-[0.85rem]">
-            No account?{" "}
-            <span
-              onClick={() => handleModeChange("signup")}
-              className="text-[#D87D4A] cursor-pointer"
-            >
-              {" "}
-              Sign up
-            </span>
-          </p>
-        )}
-        {mode === "signup" && (
-          <p className="mt-[1.5rem] pb-[1rem] text-[0.85rem]">
-            Already a member?{" "}
-            <span
-              onClick={() => handleModeChange("signin")}
-              className="text-[#D87D4A] cursor-pointer"
-            >
-              {" "}
-              Sign In
-            </span>
-          </p>
-        )}
+        <p className="text-center text-black mt-[1.5rem] text-[0.9rem]">
+          {mode === "signin"
+            ? "Don't have an account?"
+            : "Already have an account?"}{" "}
+          <span
+            onClick={() =>
+              handleModeChange(mode === "signin" ? "signup" : "signin")
+            }
+            className="text-[#D87D4A] font-semibold cursor-pointer hover:opacity-80 duration-150"
+          >
+            {mode === "signin" ? "Sign Up" : "Sign In"}
+          </span>
+        </p>
       </div>
     </>
   );

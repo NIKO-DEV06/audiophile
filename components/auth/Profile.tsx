@@ -2,6 +2,7 @@ import firebase_app from "@/firebase/firebase-config";
 import { getAuth, signOut } from "firebase/auth";
 import Image from "next/image";
 import profile from "@/assets/profile2.svg";
+import cancel from "@/assets/cancel.svg";
 import toast, { Toaster } from "react-hot-toast";
 import { useAppDispatch } from "@/store/hooks/hooks";
 import { toggleAuthModal } from "@/store/audiophileSlice";
@@ -23,10 +24,18 @@ const Profile = () => {
   return (
     <>
       <Toaster position="top-center" reverseOrder={false} />
-      <div className="bg-white mx-auto px-[2rem] py-[2rem] rounded-xl">
+      <div className="bg-white mx-auto px-[2rem] py-[2rem] rounded-xl relative">
         <h1 className="font-bold text-[1.5rem] text-center tracking-wider uppercase">
           Profile
         </h1>
+        <Image
+          onClick={() => dispatch(toggleAuthModal(false))}
+          src={cancel}
+          alt="cancel"
+          height={25}
+          width={25}
+          className="opacity-50 cursor-pointer hover:opacity-100 duration-150 absolute right-[2rem] top-[2.3rem]"
+        />
         <Image
           src={profile}
           alt="displayimage"

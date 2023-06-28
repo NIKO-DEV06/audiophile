@@ -4,6 +4,7 @@ import { AuthReveal, BgReveal } from "../utils/AuthReveal";
 import { useAuthContext } from "./context/AuthContext";
 import { useAppDispatch } from "@/store/hooks/hooks";
 import { toggleAuthModal } from "@/store/audiophileSlice";
+import { Toaster } from "react-hot-toast";
 
 const Auth = () => {
   const dispatch = useAppDispatch();
@@ -11,6 +12,8 @@ const Auth = () => {
 
   return (
     <>
+      <Toaster position="top-center" reverseOrder={false} />
+
       <AuthReveal>
         <div className="pt-[8rem] fixed w-[23.5rem] md:w-[26rem] translate-x-1/2 md:translate-y--2rem] right-1/2  ">
           {user === null ? <AuthModal /> : <Profile />}

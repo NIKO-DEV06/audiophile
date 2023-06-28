@@ -14,7 +14,7 @@ export const AuthReveal = ({ children }: Props) => {
     (state) => state.appState.authModalIsVsible
   );
   return (
-    <div className={`w-screen fixed z-[80] `}>
+    <div className={`w-screen fixed z-[80]`}>
       <motion.div
         initial={{ y: -1000 }}
         animate={{ y: authModalIsShowing ? 0 : -1000 }}
