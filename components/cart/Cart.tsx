@@ -8,7 +8,7 @@ const Cart = () => {
   return (
     <>
       <CartReveal>
-        <div className="pt-[8rem] translate-x-1/2 right-1/2 md:translate-x-0 fixed w[23.5rem] w-[80vw] md:w-[24.5rem] right7 md:right-14 lg:right-[8rem] xl:right-[10rem] z-[60] ">
+        <div className="pt-[8rem] translate-x-1/2 right-1/2 md:translate-x-0 fixed w[23.5rem] w-[90vw] md:w-[24.5rem] right7 md:right-14 lg:right-[8rem] xl:right-[10rem] z-[60] ">
           <CartModal />
         </div>
       </CartReveal>
